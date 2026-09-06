@@ -4,661 +4,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050505" />
-  <title>BRINIOUZPARTY</title>
-
+  <title>OBRIGADO // DANIEL BDAY</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #050505;
-      --red: #271fff;
-      --red-dark: #00627d;
-      --white: #f4f4f4;
-      --muted: #8d8d8d;
-      --line: rgba(255,255,255,.12);
+      --bg: #050505; --red: #ff1f1f; --white: #f4f4f4;
+      --muted: #8d8d8d; --line: rgba(255,255,255,.12);
     }
-
     html, body {
-      min-height: 100%;
-      background: var(--bg);
-      color: var(--white);
+      min-height: 100%; background: var(--bg); color: var(--white);
       font-family: Arial, Helvetica, sans-serif;
     }
-
-    body {
-      overflow-x: hidden;
-    }
-
+    body { overflow-x: hidden; }
     .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .09;
-      z-index: 50;
-      background-image:
-        repeating-radial-gradient(circle at 0 0, transparent 0, #fff 1px, transparent 2px, transparent 4px);
-      background-size: 6px 6px;
-      mix-blend-mode: overlay;
+      position: fixed; inset: 0; pointer-events: none; opacity: .09; z-index: 20;
+      background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #fff 1px, transparent 2px, transparent 4px);
+      background-size: 6px 6px; mix-blend-mode: overlay;
     }
-
     .scanlines {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 45;
-      background:
-        repeating-linear-gradient(
-          to bottom,
-          transparent 0px,
-          transparent 2px,
-          rgba(255,255,255,.025) 3px,
-          rgba(255,255,255,.025) 4px
-        );
+      position: fixed; inset: 0; pointer-events: none; z-index: 15;
+      background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(255,255,255,.025) 3px, rgba(255,255,255,.025) 4px);
     }
-
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: #000;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      transition: opacity .6s ease, visibility .6s ease;
-    }
-
-    .intro.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .intro-box {
-      width: min(92vw, 520px);
-      border: 1px solid rgba(255,255,255,.15);
-      padding: 28px;
-      position: relative;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), transparent);
-      box-shadow: 0 0 80px rgba(255,0,0,.08);
-    }
-
-    .intro-box::before,
-    .intro-box::after {
-      content: "";
-      position: absolute;
-      background: var(--red);
-    }
-
-    .intro-box::before {
-      width: 80px;
-      height: 2px;
-      top: -1px;
-      left: 20px;
-    }
-
-    .intro-box::after {
-      width: 2px;
-      height: 80px;
-      right: -1px;
-      bottom: 20px;
-    }
-
-    .terminal {
-      font-family: "Courier New", monospace;
-      font-size: 12px;
-      color: #bfbfbf;
-      line-height: 1.7;
-      margin-bottom: 26px;
-    }
-
-    .terminal .ok {
-      color: var(--red);
-    }
-
-    .access {
-      font-size: clamp(38px, 10vw, 68px);
-      line-height: .88;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .access::before,
-    .access::after {
-      content: attr(data-text);
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .access::before {
-      color: var(--red);
-      transform: translate(2px, -1px);
-      clip-path: inset(15% 0 62% 0);
-      opacity: .75;
-      animation: glitch1 1.8s infinite steps(1);
-    }
-
-    .access::after {
-      color: #fff;
-      transform: translate(-2px, 1px);
-      clip-path: inset(68% 0 10% 0);
-      opacity: .55;
-      animation: glitch2 2.1s infinite steps(1);
-    }
-
-    @keyframes glitch1 {
-      0%, 85%, 100% { transform: translate(2px, -1px); }
-      86% { transform: translate(-5px, 2px); }
-      88% { transform: translate(6px, -2px); }
-      90% { transform: translate(1px, 1px); }
-    }
-
-    @keyframes glitch2 {
-      0%, 82%, 100% { transform: translate(-2px, 1px); }
-      83% { transform: translate(5px, 0); }
-      86% { transform: translate(-6px, 2px); }
-      89% { transform: translate(-1px, -1px); }
-    }
-
-    .enter-btn,
-    .join-btn {
-      border: 0;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      font-weight: 900;
-    }
-
-    .enter-btn {
-      width: 100%;
-      min-height: 56px;
-      background: var(--red);
-      color: #000;
-      font-size: 12px;
-      transition: transform .15s ease, filter .15s ease;
-    }
-
-    .enter-btn:hover {
-      filter: brightness(1.1);
-    }
-
-    .enter-btn:active {
-      transform: scale(.985);
-    }
-
     .site {
-      min-height: 100vh;
-      padding: 22px;
-      display: grid;
-      place-items: center;
+      min-height: 100vh; display: grid; place-items: center; padding: 22px;
       position: relative;
-      isolation: isolate;
       background:
         radial-gradient(circle at 18% 18%, rgba(255,0,0,.10), transparent 28%),
         radial-gradient(circle at 80% 88%, rgba(255,0,0,.06), transparent 32%),
         #050505;
     }
-
-    .site::before {
-      content: "CF // PRIVATE EVENT // 2026 //";
-      position: fixed;
-      left: -70px;
-      top: 50%;
-      transform: rotate(-90deg) translateY(-50%);
-      transform-origin: center;
-      font-size: 10px;
-      letter-spacing: .28em;
-      color: #3b3b3b;
-      white-space: nowrap;
-    }
-
     .shell {
-      width: min(100%, 760px);
-      border: 1px solid var(--line);
-      background: rgba(7,7,7,.86);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 30px 120px rgba(0,0,0,.65);
+      width: min(100%, 760px); border: 1px solid var(--line);
+      background: rgba(7,7,7,.88); overflow: hidden;
+      box-shadow: 0 30px 120px rgba(0,0,0,.65); position: relative; z-index: 1;
     }
-
     .topbar {
-      min-height: 38px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      font-size: 9px;
-      color: #666;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      min-height: 38px; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; font-size: 9px; color: #666;
+      letter-spacing: .18em; text-transform: uppercase;
     }
-
-    .topbar .live {
-      color: var(--red);
-    }
-
-    .hero {
-      padding: 38px 34px 26px;
-      position: relative;
-    }
-
+    .topbar .ended { color: var(--red); }
+    .hero { padding: 42px 34px 30px; position: relative; }
     .stamp {
-      display: inline-block;
-      border: 1px solid var(--red);
-      color: var(--red);
-      padding: 7px 10px;
-      font-size: 9px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      transform: rotate(-2deg);
-      margin-bottom: 20px;
+      display: inline-block; border: 1px solid var(--red); color: var(--red);
+      padding: 7px 10px; font-size: 9px; letter-spacing: .2em;
+      text-transform: uppercase; transform: rotate(-2deg); margin-bottom: 22px;
     }
-
     h1 {
-      font-size: clamp(54px, 13vw, 116px);
-      line-height: .76;
-      letter-spacing: -.075em;
-      text-transform: uppercase;
-      max-width: 660px;
-      margin-bottom: 28px;
+      font-size: clamp(54px, 13vw, 112px); line-height: .78;
+      letter-spacing: -.075em; text-transform: uppercase;
+      margin-bottom: 30px; max-width: 680px;
     }
-
-    h1 .red {
-      color: var(--red);
+    h1 .red { color: var(--red); }
+    .message {
+      max-width: 590px; color: #c5c5c5; font-size: 16px;
+      line-height: 1.75; margin-bottom: 30px;
     }
-
-    .subtitle {
-      color: #c1c1c1;
-      max-width: 540px;
-      font-size: 15px;
-      line-height: 1.65;
-      margin-bottom: 26px;
-    }
-
+    .message strong { color: var(--white); }
     .divider {
       height: 1px;
       background: linear-gradient(90deg, var(--red), rgba(255,255,255,.12), transparent);
       margin: 0 34px;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 0;
-    }
-
-    .panel {
-      padding: 28px 34px 34px;
-    }
-
-    .panel + .panel {
-      border-left: 1px solid var(--line);
-    }
-
+    .photos { padding: 30px 34px 36px; }
     .label {
-      font-size: 9px;
-      color: #666;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+      font-size: 9px; color: #666; letter-spacing: .22em;
+      text-transform: uppercase; margin-bottom: 10px;
     }
-
-    .value {
-      font-size: 20px;
-      line-height: 1.2;
-      margin-bottom: 20px;
+    .photos h2 { font-size: 22px; margin-bottom: 18px; font-weight: 500; }
+    .photos-btn {
+      width: 100%; min-height: 66px; background: var(--red); color: #050505;
+      border: 0; cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; position: relative;
+      text-transform: uppercase; letter-spacing: .16em; font-weight: 900;
+      font-size: 12px; transition: transform .15s ease, filter .15s ease;
     }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-top: 16px;
+    .photos-btn::after {
+      content: "↗"; position: absolute; right: 20px; font-size: 18px;
     }
-
-    .timebox {
-      border: 1px solid var(--line);
-      padding: 12px 8px;
-      text-align: center;
-      background: rgba(255,255,255,.02);
-    }
-
-    .timebox b {
-      display: block;
-      font-size: 22px;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .timebox span {
-      display: block;
-      font-size: 8px;
-      color: #666;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .join-btn {
-      width: 100%;
-      min-height: 64px;
-      background: var(--red);
-      color: #050505;
-      font-size: 12px;
-      transition: transform .15s ease, filter .15s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .join-btn::after {
-      content: "→";
-      position: absolute;
-      right: 20px;
-      font-size: 20px;
-      top: 50%;
-      transform: translateY(-52%);
-    }
-
-    .join-btn:hover {
-      filter: brightness(1.08);
-    }
-
-    .join-btn:active {
-      transform: scale(.985);
-    }
-
-    .micro {
-      margin-top: 14px;
-      font-size: 10px;
-      line-height: 1.5;
-      color: #5f5f5f;
-    }
-
-    .warning {
-      color: var(--red);
-      margin-top: 16px;
-      font-family: "Courier New", monospace;
-      font-size: 10px;
-      line-height: 1.5;
-    }
-
+    .photos-btn:hover { filter: brightness(1.1); }
+    .photos-btn:active { transform: scale(.985); }
+    .micro { margin-top: 14px; color: #5f5f5f; font-size: 10px; line-height: 1.5; }
     .footer {
-      min-height: 42px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      font-size: 8px;
-      color: #484848;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      min-height: 42px; border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; font-size: 8px; color: #484848;
+      letter-spacing: .16em; text-transform: uppercase;
     }
-
     .big-number {
-      position: absolute;
-      right: 20px;
-      top: 14px;
-      font-size: 128px;
-      line-height: 1;
-      font-weight: 900;
-      color: rgba(255,255,255,.025);
-      letter-spacing: -.08em;
-      user-select: none;
-      pointer-events: none;
+      position: absolute; right: 16px; top: 12px; font-size: 132px;
+      line-height: 1; font-weight: 900; color: rgba(255,255,255,.025);
+      letter-spacing: -.08em; pointer-events: none; user-select: none;
     }
-
-    .flash {
-      animation: flash .28s linear;
-    }
-
-    @keyframes flash {
-      0% { filter: invert(0); }
-      45% { filter: invert(1); }
-      100% { filter: invert(0); }
-    }
-
     @media (max-width: 700px) {
-      .site {
-        padding: 12px;
-      }
-
-      .site::before {
-        display: none;
-      }
-
-      .hero {
-        padding: 30px 22px 22px;
-      }
-
-      .divider {
-        margin: 0 22px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .panel {
-        padding: 24px 22px 28px;
-      }
-
-      .panel + .panel {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .countdown {
-        gap: 6px;
-      }
-
-      .timebox b {
-        font-size: 19px;
-      }
-
-      .big-number {
-        font-size: 86px;
-        right: 8px;
-        top: 38px;
-      }
+      .site { padding: 12px; }
+      .hero { padding: 32px 22px 26px; }
+      .divider { margin: 0 22px; }
+      .photos { padding: 26px 22px 30px; }
+      .big-number { font-size: 86px; top: 34px; right: 8px; }
     }
   </style>
 </head>
 <body>
-
   <div class="noise"></div>
   <div class="scanlines"></div>
 
-  <section class="intro" id="intro">
-    <div class="intro-box">
-      <div class="terminal">
-        > checando convite...<br>
-        > status: <span class="ok">RESENHA</span><br>
-        > Acesso: CF
-      </div>
-
-      <div class="access" data-text="ACCESS GRANTED">
-        ACCESS<br>GRANTED
-      </div>
-
-      <button class="enter-btn" id="enterBtn">
-        abrir convite
-      </button>
-    </div>
-  </section>
-
-  <main class="site" id="site">
+  <main class="site">
     <section class="shell">
       <div class="topbar">
         <span>DNL_BDAY.exe</span>
-        <span class="live">● INVITE ACTIVE</span>
+        <span class="ended">● EVENT ENDED</span>
       </div>
 
       <div class="hero">
         <div class="big-number">19</div>
+        <div class="stamp">05.09.2026 // OBRIGADO</div>
 
-        <div class="stamp">EVENTO PRIVADO // ACESSO DO CF</div>
+        <h1>OBRI<br><span class="red">GADO.</span></h1>
 
-        <h1>
-          BRINIOUZ<br>
-          <span class="red">PARTY.</span>
-        </h1>
-
-        <p class="subtitle">
-          Se esse link chegou até você, não precisa perguntar duas vezes:
-          você está convidado. As informações completas ficam dentro do grupo.
+        <p class="message">
+          Muito obrigado a <strong>todo mundo que apareceu</strong> e fez parte desse dia.
+          De verdade, foi muito foda ter vocês comigo.
+          <br><br>
+          A festa acabou, mas as provas ficaram.
         </p>
       </div>
 
       <div class="divider"></div>
 
-      <div class="grid">
-        <section class="panel">
-          <div class="label">evento</div>
-          <div class="value">3 dias antes do aniversário</div>
+      <section class="photos">
+        <div class="label">arquivo da noite</div>
+        <h2>As fotos já estão disponíveis.</h2>
 
-          <div class="label">data</div>
-          <div class="value" id="dateText">00 / 00 / 2026</div>
+        <a class="photos-btn"
+           href="https://photos.app.goo.gl/iy3EpHF5oJPavAKW9"
+           target="_blank"
+           rel="noopener noreferrer">
+          ver as fotos
+        </a>
 
-          <div class="label">contagem regressiva</div>
-
-          <div class="countdown">
-            <div class="timebox">
-              <b id="days">00</b>
-              <span>dias</span>
-            </div>
-
-            <div class="timebox">
-              <b id="hours">00</b>
-              <span>horas</span>
-            </div>
-
-            <div class="timebox">
-              <b id="minutes">00</b>
-              <span>min</span>
-            </div>
-
-            <div class="timebox">
-              <b id="seconds">00</b>
-              <span>seg</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="label">access point</div>
-          <div class="value">Grupo oficial da festa</div>
-
-          <button class="join-btn" id="joinBtn">
-            entrar no grupo
-          </button>
-
-          <p class="micro">
-            Ao clicar, você será redirecionado para o grupo do WhatsApp.
-          </p>
-
-          <p class="warning">
-            [!] não compartilha o link aleatoriamente.<br>
-            [!] endereço e detalhes completos ficam no grupo.
-          </p>
-        </section>
-      </div>
+        <p class="micro">O link abre o álbum no Google Photos.</p>
+      </section>
 
       <footer class="footer">
         <span>CF // 2026</span>
-        <span>INVITE_019 // AUTHORIZED</span>
+        <span>05.09.2026 // ARCHIVED</span>
       </footer>
     </section>
   </main>
-
-  <script>
-    /*
-      ==========================================
-      EDITE SÓ ESSAS DUAS LINHAS
-      ==========================================
-    */
-
-    const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/IFeuWstDByyEhLBXyOSGEb";
-
-    // Formato: ANO-MÊS-DIAThh:mm:ss
-    const PARTY_DATE = "2026-09-05T19:00:00";
-
-    /*
-      ==========================================
-    */
-
-    const intro = document.getElementById("intro");
-    const enterBtn = document.getElementById("enterBtn");
-    const joinBtn = document.getElementById("joinBtn");
-    const site = document.getElementById("site");
-
-    enterBtn.addEventListener("click", () => {
-      intro.classList.add("hidden");
-    });
-
-    joinBtn.addEventListener("click", () => {
-      site.classList.remove("flash");
-      void site.offsetWidth;
-      site.classList.add("flash");
-
-      setTimeout(() => {
-        if (WHATSAPP_GROUP_LINK.includes("SEU_LINK_AQUI")) {
-          alert("Coloque o link real do grupo do WhatsApp no código.");
-          return;
-        }
-
-        window.open(WHATSAPP_GROUP_LINK, "_blank");
-      }, 180);
-    });
-
-    const party = new Date(PARTY_DATE);
-
-    const dateFormatter = new Intl.DateTimeFormat("pt-BR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric"
-    });
-
-    document.getElementById("dateText").textContent = dateFormatter.format(party);
-
-    function updateCountdown() {
-      const now = new Date();
-      let diff = party - now;
-
-      if (diff <= 0) {
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-        return;
-      }
-
-      const days = Math.floor(diff / 86400000);
-      diff %= 86400000;
-
-      const hours = Math.floor(diff / 3600000);
-      diff %= 3600000;
-
-      const minutes = Math.floor(diff / 60000);
-      diff %= 60000;
-
-      const seconds = Math.floor(diff / 1000);
-
-      document.getElementById("days").textContent = String(days).padStart(2, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
 </body>
 </html>
